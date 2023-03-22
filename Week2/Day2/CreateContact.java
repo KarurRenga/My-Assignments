@@ -49,8 +49,6 @@ public class CreateContact {
 		
 		driver.findElement(By.className("smallSubmit")).click();
 		
-//		driver.findElement(By.name("submitButton")).click();
-
 		driver.findElement(By.xpath("//a[text()='Edit']")).click();
 		driver.findElement(By.id("updateContactForm_description")).clear();
 //		driver.findElement(By.name("description")).clear();
