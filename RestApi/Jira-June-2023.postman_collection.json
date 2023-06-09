@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "f269e04c-7e9c-4bba-bdb7-9fca8a45de31",
+		"name": "Jira-June-2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22193196"
+	},
+	"item": [
+		{
+			"name": "Ass-1-create an issue in JIRA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF00wial7mKHuak9oE9aHaEjKB7qfwSfs_1x8qnsRxYWz_ky_63NJzXejpKOpb52G1Bef5jyotz02R_4s5emso0m9cpD-PhujcWZiu6ZxjnqbFfeA7gDJ5n1OyhGlZQHZb7nNJLxnDrVicP1f9da2g4EMJl-DAB68rdrQYtjCQ-Zlo=3E598ED3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testleafjune2022@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"JUN\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testleafjune2022.atlassian.net/rest/api/2/issue/",
+					"protocol": "https",
+					"host": [
+						"testleafjune2022",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ass-3-update an existing issue in JIRA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF00wial7mKHuak9oE9aHaEjKB7qfwSfs_1x8qnsRxYWz_ky_63NJzXejpKOpb52G1Bef5jyotz02R_4s5emso0m9cpD-PhujcWZiu6ZxjnqbFfeA7gDJ5n1OyhGlZQHZb7nNJLxnDrVicP1f9da2g4EMJl-DAB68rdrQYtjCQ-Zlo=3E598ED3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testleafjune2022@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": \"VRR - Bug creation Using REST API for testing\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testleafjune2022.atlassian.net/rest/api/2/issue/10864",
+					"protocol": "https",
+					"host": [
+						"testleafjune2022",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10864"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ass-4-delete an existing issue in JIRA",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF00wial7mKHuak9oE9aHaEjKB7qfwSfs_1x8qnsRxYWz_ky_63NJzXejpKOpb52G1Bef5jyotz02R_4s5emso0m9cpD-PhujcWZiu6ZxjnqbFfeA7gDJ5n1OyhGlZQHZb7nNJLxnDrVicP1f9da2g4EMJl-DAB68rdrQYtjCQ-Zlo=3E598ED3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testleafjune2022@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://testleafjune2022.atlassian.net/rest/api/2/issue/10001",
+					"protocol": "https",
+					"host": [
+						"testleafjune2022",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ass-2-Search an issue in JIRA",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF00wial7mKHuak9oE9aHaEjKB7qfwSfs_1x8qnsRxYWz_ky_63NJzXejpKOpb52G1Bef5jyotz02R_4s5emso0m9cpD-PhujcWZiu6ZxjnqbFfeA7gDJ5n1OyhGlZQHZb7nNJLxnDrVicP1f9da2g4EMJl-DAB68rdrQYtjCQ-Zlo=3E598ED3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testleafjune2022@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"JUN\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testleafjune2022.atlassian.net/rest/api/2/issue/10864",
+					"protocol": "https",
+					"host": [
+						"testleafjune2022",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10864"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ass-2-Search an issue in JIRA Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "ATATT3xFfGF00wial7mKHuak9oE9aHaEjKB7qfwSfs_1x8qnsRxYWz_ky_63NJzXejpKOpb52G1Bef5jyotz02R_4s5emso0m9cpD-PhujcWZiu6ZxjnqbFfeA7gDJ5n1OyhGlZQHZb7nNJLxnDrVicP1f9da2g4EMJl-DAB68rdrQYtjCQ-Zlo=3E598ED3",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "testleafjune2022@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"JUN\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://testleafjune2022.atlassian.net/rest/api/2/issue/10001",
+					"protocol": "https",
+					"host": [
+						"testleafjune2022",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"10001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
