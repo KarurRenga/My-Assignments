@@ -1,0 +1,480 @@
+{
+	"info": {
+		"_postman_id": "8e3f6a84-cb46-4d7c-b7d0-c9d17a9e5d4d",
+		"name": "Servicenow-June-2023",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22193196"
+	},
+	"item": [
+		{
+			"name": "Get all the incidents with the display of only number,urgency and category",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident?sysparm_fields=number,urgency,category",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "number,urgency,category"
+						},
+						{
+							"key": "state",
+							"value": "In progress",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all the incidents with  category as inquiry",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident?sysparm_fields=sys_id,number,category,description,state&description=rengarajan",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sys_id,number,category,description,state"
+						},
+						{
+							"key": "description",
+							"value": "v.rengarajan",
+							"disabled": true
+						},
+						{
+							"key": "incident",
+							"value": "INC0010010",
+							"disabled": true
+						},
+						{
+							"key": "description",
+							"value": "rengarajan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post without body",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post with description and category",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Rengarajan\",\r\n    \"category\": \"software\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Incident in servicenow -category as software, state as In Progress",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"state\": \"In progress\",\r\n    \"category\": \"software\",\r\n    \"description\": \"Rengarajan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put - Update existing record",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"approval\": \"requested\",\r\n    \"made_sla\": \"false\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident/bfa78a5c975321109d7fbf27f053af59",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"bfa78a5c975321109d7fbf27f053af59"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patch - update existing record",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"V.RENGARAJAN\",\r\n    \"category\": \"HARDWARE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident/37068ed8975321109d7fbf27f053af9f",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"37068ed8975321109d7fbf27f053af9f"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Category,description",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an incident in service now",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident/af487765971321109d7fbf27f053af07",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"af487765971321109d7fbf27f053af07"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Category,description",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create post through file",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
