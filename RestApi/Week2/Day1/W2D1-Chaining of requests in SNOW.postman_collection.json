@@ -1,0 +1,236 @@
+{
+	"info": {
+		"_postman_id": "316e4167-e779-4846-8f87-aee19e20b559",
+		"name": "W2D1-Chaining of requests in SNOW",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22193196"
+	},
+	"item": [
+		{
+			"name": "create post with description and category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = pm.response.json();\r",
+							"var sys_id = resp.result.sys_id\r",
+							"\r",
+							"pm.globals.set(\"SystemId\", sys_id);\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"description\",\r\n    \"category\": \"short description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/now/table/{{inc}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"{{inc}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put - Update existing record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"approval\": \"requested\",\r\n    \"made_sla\": \"TRUE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/api/now/table/{{inc}}/{{SystemId}}",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"{{inc}}",
+						"{{SystemId}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an incident in service now",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "98TtG*sDuGb^",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev164074.service-now.com/api/now/table/{{inc}}/{{SystemId}}",
+					"protocol": "https",
+					"host": [
+						"dev164074",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"{{inc}}",
+						"{{SystemId}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Category,description",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{Uname}}",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "98TtG*sDuGb^",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Uname",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "inc",
+			"value": "incident",
+			"type": "string"
+		}
+	]
+}
