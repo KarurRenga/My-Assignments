@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "b9ff463d-b045-4ab8-aa5f-3129f307fbf4",
+		"name": "W2D1-Chaining of requests in JIRA Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22193196"
+	},
+	"item": [
+		{
+			"name": "create post with description and category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp = pm.response.json();\r",
+							"var id = resp.id\r",
+							"\r",
+							"pm.globals.set(\"IssueId\",id);\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"project\": {\r\n            \"key\": \"TES\"\r\n        },\r\n        \"summary\": \"create issue in RA project\",\r\n        \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n        \"issuetype\": {\r\n            \"name\": \"Task\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jiraurl}}/rest/api/2/issue",
+					"host": [
+						"{{jiraurl}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put - Update existing record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"  pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n        \"description\": \"VRR - Bug creation Using REST API for testing\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jiraurl}}/rest/api/2/issue/{{IssueId}}",
+					"host": [
+						"{{jiraurl}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueId}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Urgency,Category",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an incident in service now",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{jiraurl}}/rest/api/2/issue/{{IssueId}}",
+					"host": [
+						"{{jiraurl}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{IssueId}}"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sysparm_fields=Number,Category,description",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "ATATT3xFfGF0mvtzC7E1H5d9miWWGR46tw4sAgaYrMWki49yrUcBRhWSXuL5gRLnsxRX8RqxK1737bYpNbiRHZZwqvfZdrH0mGTwpNacJdhTg0whHI2IxuqkdmwRjcTUNw8WKFn8DIGWwspux4zePxWflbRcOYZ5YvFpMZYHhAUXd4VzKDqkJ3s=277EF601",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{Uname}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Uname",
+			"value": "Feb2023restAPI@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "inc",
+			"value": "incident",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
